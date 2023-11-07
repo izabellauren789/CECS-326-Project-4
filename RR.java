@@ -8,4 +8,6 @@
 
 import java.util.*;
 
-// Your code here
+/*
+ * just implement queue data structure, with a time constarint of max time quantum as the value
+ */
