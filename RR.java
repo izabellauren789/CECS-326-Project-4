@@ -4,10 +4,20 @@
  *
  * This algorithm will run tasks according to round-robin scheduling..
  */
-// project 4
 
 import java.util.*;
 
+public class RR implements Algorithm {
+
+    public void schedule() {
+
+    }
+
+    public Task pickNexTask() {
+
+    }
+}
 /*
- * just implement queue data structure, with a time constarint of max time quantum as the value
+ * just implement queue data structure, with a time constarint of max time
+ * quantum as the value
  */
