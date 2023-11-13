@@ -20,7 +20,7 @@ public class RR implements Algorithm {
         // implement run CPU here with RR logic
     }
 
-    public Task pickNexTask() {
+    public Task pickNextTask() {
         Task temp;
         Task next = null;
         int max = 0;

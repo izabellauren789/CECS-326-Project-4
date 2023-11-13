@@ -11,7 +11,7 @@
  * where 
  *  schedule is schedule of tasks.
  *
- *  algorithm = [FCFS, SJF, PRI, RR, PRI-RR]
+ *  algorithm = [FCFS, PRI, RR]
  */
 
 import java.util.*;
