@@ -9,7 +9,7 @@ import java.util.*;
 
 public class RR implements Algorithm {
     private List<Task> queue;
-    // declare more here
+    int quantum = 0; // amount time subtracted form burst each task is run
 
     public RR(List<Task> queue) {
         this.queue = queue;
@@ -21,23 +21,8 @@ public class RR implements Algorithm {
     }
 
     public Task pickNextTask() {
-        Task temp;
-        Task next = null;
-        int max = 0;
-        int n = queue.size();
-
-        for (int i = 0; i < n; i++) {
-            temp = queue.get(i);
-            if (temp.getPriority() > max) {
-                max = temp.getPriority();
-                next = temp;
-            }
+        for( int i =0; i < 6; i++){
+            queue.get(i).setBurst(queue.get(i).getBurst()-quantum);
         }
-        queue.remove(next);
-        return next;
     }
 }
-/*
- * just implement queue data structure, with a time constarint of max time
- * quantum as the value
- */
