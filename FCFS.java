@@ -23,8 +23,7 @@ public class FCFS implements Algorithm {
     }
 
     public Task pickNextTask() {
-        Task temp = current;
         queue.add(current);
-        return temp;
+        return queue.remove(0);
     }
 }
