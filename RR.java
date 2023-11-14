@@ -17,7 +17,7 @@ public class RR implements Algorithm {
     }
 
     public void schedule() {
-        while( !queue.isEmpty()){
+        while( !queue.isEmpty() && queue.get(0).getBurst() > 0){
             scheduler = pickNextTask();
 
             CPU.run(scheduler, scheduler.getBurst());
@@ -25,9 +25,9 @@ public class RR implements Algorithm {
     }
 
     public Task pickNextTask() {
-        if( queue.get(0).getBurst() > 0 ){
-            queue.get(0).setBurst(queue.get(0).getBurst() - queue.get(0).getPriority());
-        }
+        // //for( int i =0; i < queue.get(i).getTid(); i++){
+        //     quantum = queue.get(i).getPriority();
+        queue.get(0).setBurst(queue.get(0).getBurst() - queue.get(0).getPriority());// get task from queue, set burst time of queeue get queue  - quantum
         return queue.remove(0);
     }
 }
