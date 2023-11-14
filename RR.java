@@ -9,7 +9,7 @@ import java.util.*;
 
 public class RR implements Algorithm {
     private List<Task> queue;
-    int quantum = 0; // amount time subtracted form burst each task is run
+    private Task scheduler;
 
     public RR(List<Task> queue) {
         this.queue = queue;
@@ -17,12 +17,17 @@ public class RR implements Algorithm {
     }
 
     public void schedule() {
-        // implement run CPU here with RR logic
+        while( !queue.isEmpty()){
+            scheduler = pickNextTask();
+
+            CPU.run(scheduler, scheduler.getBurst());
+        }
     }
 
     public Task pickNextTask() {
-        for( int i =0; i < 6; i++){
-            queue.get(i).setBurst(queue.get(i).getBurst()-quantum);
+        if( queue.get(0).getBurst() > 0 ){
+            queue.get(0).setBurst(queue.get(0).getBurst() - queue.get(0).getPriority());
         }
+        return queue.remove(0);
     }
 }
