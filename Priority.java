@@ -27,9 +27,8 @@ public class Priority implements Algorithm {
         Task temp;
         Task next = null;
         int max = 0;
-        int n = queue.size();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < queue.size(); i++) {
             temp = queue.get(i);
             if (temp.getPriority() > max) {
                 max = temp.getPriority();

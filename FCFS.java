@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FCFS implements Algorithm {
     private List<Task> queue;
-    private Task scheduler;
+    private Task current;
 
     public FCFS(List<Task> queue) {
         this.queue = queue;
@@ -15,9 +15,9 @@ public class FCFS implements Algorithm {
 
     public void schedule() {
         while (!queue.isEmpty()) {
-            scheduler = pickNextTask();
+            current = pickNextTask();
 
-            CPU.run(scheduler, scheduler.getBurst());
+            CPU.run(current, current.getBurst());
         }
     }
 
