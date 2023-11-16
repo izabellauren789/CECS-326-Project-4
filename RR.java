@@ -24,7 +24,7 @@ public class RR implements Algorithm {
         int i = scan.nextInt();
         scan.close();
         System.out.println("Starting Round Robin CPU Scheduling...");
-        int quantum;
+        int quantum = 10; // is 10 right for 10 mililmseconds or is there something i have to do to it?
 
         while (!queue.isEmpty()) {
             current = pickNextTask();
