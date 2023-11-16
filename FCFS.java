@@ -17,11 +17,17 @@ public class FCFS implements Algorithm {
         while (!queue.isEmpty()) {
             current = pickNextTask();
 
-            CPU.run(current, current.getBurst());
+            if (current != null) {
+                CPU.run(current, current.getBurst());
+            }
         }
     }
 
     public Task pickNextTask() {
-        return queue.remove(0);
+        if (!queue.isEmpty()) {
+            return queue.remove(0);
+        } else {
+            return null;
+        }
     }
 }

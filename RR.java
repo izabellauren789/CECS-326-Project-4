@@ -20,10 +20,22 @@ public class RR implements Algorithm {
     }
 
     public void schedule() {
-        int quantum = 10;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a time quantum...");
+        int i = scan.nextInt();
+        scan.close();
+        System.out.println("Starting Round Robin CPU Scheduling...");
+        int quantum;
 
         while (!queue.isEmpty()) {
             current = pickNextTask();
+
+            // check to see if burst time is less than the time quantum or not
+            if (current.getBurst() < i) {
+                quantum = current.getBurst();
+            } else {
+                quantum = i;
+            }
 
             // run task
             CPU.run(current, quantum);
@@ -35,41 +47,24 @@ public class RR implements Algorithm {
             if (current.getBurst() > 0) {
                 queue.add(current);
             } else {
+                // Task completed, add to the completedTasks list
+                System.out.println("Task " + current.getName() + " has finished. \n");
                 completedTasks.add(current);
             }
         }
+        System.out.println("Order in which tasks finished first...");
         for (Task task : completedTasks) {
-            System.out.println(task);
+            System.out.println(task.getName());
         }
+
     }
 
     public Task pickNextTask() {
-        // //for( int i =0; i < queue.get(i).getTid(); i++){
-        // quantum = queue.get(i).getPriority();
-        // queue.get(0).setBurst(queue.get(0).getBurst() -
-        // queue.get(0).getPriority());// get task from queue, set burst time of queeue
-        // get queue - quantum
 
         if (!queue.isEmpty()) {
             return queue.remove(0);
         } else {
             return null;
         }
-
-        /*
-         * Task temp;
-         * Task next = null;
-         * int max = 0;
-         * 
-         * for (int i = 0; i < queue.size(); i++) {
-         * temp = queue.get(i);
-         * if (temp.getPriority() > max) {
-         * max = temp.getPriority();
-         * next = temp;
-         * }
-         * }
-         * queue.remove(next);
-         * return next;
-         */
     }
 }
