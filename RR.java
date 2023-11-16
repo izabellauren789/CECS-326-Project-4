@@ -16,7 +16,6 @@ public class RR implements Algorithm {
     public RR(List<Task> queue) {
         this.queue = queue;
         this.completedTasks = new ArrayList<>();
-        // not finished
     }
 
     public void schedule() {
@@ -40,19 +39,20 @@ public class RR implements Algorithm {
             // run task
             CPU.run(current, quantum);
 
-            // set new burst time
+            // set new burst time after running time quantum
             current.setBurst(current.getBurst() - quantum);
 
-            // add back to queue
+            // add back to queue if still has burst time left
             if (current.getBurst() > 0) {
                 queue.add(current);
             } else {
-                // Task completed, add to the completedTasks list
+                // Task completed, add to the completedTasks list and state its finished
                 System.out.println("Task " + current.getName() + " has finished. \n");
                 completedTasks.add(current);
             }
         }
         System.out.println("Order in which tasks finished first...");
+        // prints out order of tasks
         for (Task task : completedTasks) {
             System.out.println(task.getName());
         }

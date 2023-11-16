@@ -1,6 +1,6 @@
 
 /**
- * Non-preemptive priority scheduling algorithm. IZA
+ * Non-preemptive priority scheduling algorithm. 
  */
 
 import java.util.*;
@@ -40,8 +40,3 @@ public class Priority implements Algorithm {
     }
 
 }
-
-/*
- * just implement queue data structure, using priortiy as a check with if or
- * case or something else
- */
